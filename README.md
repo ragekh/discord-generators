@@ -157,6 +157,11 @@ To check the current prompts:
    - `role-name.js` - Role Name Generator
    - `server-rules.js` - Server Rules Generator
    - `announcement.js` - Announcement Generator
+   - `emoji.js` - Emoji Generator
+   - `event.js` - Event Generator
+   - `poll.js` - Poll Generator
+   - `webhook.js` - Webhook Generator
+   - `moderation.js` - Moderation Response Generator
 
 3. Look for the `prompt` variable in each file, which contains the text sent to the AI model.
 
