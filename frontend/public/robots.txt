@@ -1,0 +1,51 @@
+# Discord AI Generators robots.txt
+# https://discord-ai-generators.com
+
+User-agent: *
+Allow: /
+
+# Disallow crawling of error pages
+Disallow: /404
+Disallow: /500
+Disallow: /_next/
+
+# Sitemap
+Sitemap: https://discord-ai-generators.com/sitemap.xml
+
+# Crawl delay to be nice to search engines
+Crawl-delay: 1
+
+# Google-specific directives
+User-agent: Googlebot
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /_next/
+
+# Bing-specific directives
+User-agent: Bingbot
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /_next/
+
+# Yahoo-specific directives
+User-agent: Slurp
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /_next/
+
+# Yandex-specific directives
+User-agent: Yandex
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /_next/
+
+# Baidu-specific directives
+User-agent: Baiduspider
+Allow: /
+Disallow: /404
+Disallow: /500
+Disallow: /_next/
