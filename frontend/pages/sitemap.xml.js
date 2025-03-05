@@ -5,6 +5,7 @@ export async function getServerSideProps({ res }) {
   
   const pages = [
     { url: '/', priority: '1.0', changefreq: 'weekly' },
+    // Core generators - higher priority
     { url: '/server-name', priority: '0.9', changefreq: 'monthly' },
     { url: '/server-description', priority: '0.9', changefreq: 'monthly' },
     { url: '/channel-name', priority: '0.9', changefreq: 'monthly' },
@@ -12,7 +13,13 @@ export async function getServerSideProps({ res }) {
     { url: '/bot-command', priority: '0.8', changefreq: 'monthly' },
     { url: '/role-name', priority: '0.8', changefreq: 'monthly' },
     { url: '/server-rules', priority: '0.8', changefreq: 'monthly' },
-    { url: '/announcement', priority: '0.8', changefreq: 'monthly' }
+    { url: '/announcement', priority: '0.8', changefreq: 'monthly' },
+    // Additional generators
+    { url: '/emoji', priority: '0.8', changefreq: 'monthly' },
+    { url: '/event', priority: '0.8', changefreq: 'monthly' },
+    { url: '/poll', priority: '0.8', changefreq: 'monthly' },
+    { url: '/webhook', priority: '0.8', changefreq: 'monthly' },
+    { url: '/moderation', priority: '0.8', changefreq: 'monthly' }
   ];
   
   const currentDate = new Date().toISOString().split('T')[0];

@@ -71,14 +71,29 @@ export default function ModerationResponseGenerator() {
     '@type': 'WebApplication',
     'name': 'Discord Moderation Response Generator',
     'url': 'https://discord-ai-generators.com/moderation',
-    'description': 'Create professional templates for moderator responses to rule violations with our free AI generator. Enter the violation type and severity to get a well-crafted response instantly!',
+    'description': 'Create effective Discord moderation responses for rule violations with our free AI tool. Generate professional templates for spam, harassment, hate speech, and more to maintain a healthy community.',
     'applicationCategory': 'UtilityApplication',
     'offers': {
       '@type': 'Offer',
       'price': '0',
-      'priceCurrency': 'USD'
+      'priceCurrency': 'USD',
+      'availability': 'https://schema.org/InStock'
     },
-    'operatingSystem': 'Web'
+    'operatingSystem': 'Web',
+    'keywords': 'Discord moderation, rule violations, moderation templates, server management, community guidelines',
+    'softwareVersion': '1.0',
+    'screenshot': 'https://discord-ai-generators.com/images/moderation-generator-screenshot.jpg',
+    'featureList': [
+      'Spam response templates',
+      'Harassment moderation messages',
+      'Hate speech violation responses',
+      'NSFW content moderation templates',
+      'Customizable severity levels'
+    ],
+    'audience': {
+      '@type': 'Audience',
+      'audienceType': 'Discord moderators and administrators'
+    }
   };
 
   // Predefined violation type options
@@ -111,9 +126,9 @@ export default function ModerationResponseGenerator() {
   return (
     <>
       <SEO
-        title="Discord Moderation Response Generator - Professional Templates"
-        description="Create professional templates for moderator responses to rule violations with our free AI generator. Enter the violation type and severity to get a well-crafted response instantly!"
-        keywords="Discord moderation, server rules, rule violations, moderator responses, Discord moderation templates"
+        title="Discord Moderation Response Generator - Professional Moderation Templates"
+        description="Create effective Discord moderation responses for rule violations with our free AI tool. Generate professional templates for spam, harassment, hate speech, and more to maintain a healthy community."
+        keywords="Discord moderation tools, Discord server moderation, Discord mod templates, Discord rule enforcement, Discord ban message templates, Discord warning templates, Discord moderation guide, Discord community management"
         schema={moderationSchema}
       />
       

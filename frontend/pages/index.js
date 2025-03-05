@@ -78,9 +78,9 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Discord AI Generators - Boost Your Discord Server with AI Tools"
-        description="Generate Discord server names, descriptions, channel names, and more with our free AI tools. Optimize your Discord server for success!"
-        keywords="Discord AI tools, Discord server name generator, Discord server description, Discord channel names, Discord server optimization"
+        title="Discord AI Generators - Free Tools to Grow Your Discord Server"
+        description="Create engaging Discord server content with our free AI tools. Generate server names, descriptions, channel names, welcome messages, and more to boost member engagement and retention."
+        keywords="Discord server tools, Discord name generator, Discord server setup, Discord server ideas, Discord server templates, Discord server growth, Discord community building, Discord server optimization, Discord AI tools"
         ogImage="https://discord-ai-generators.com/og-image.jpg"
         ogImageAlt="Discord AI Generators - Free tools for Discord server owners"
       />

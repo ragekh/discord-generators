@@ -19,10 +19,10 @@ import { useRouter } from 'next/router';
  */
 const SEO = ({
   title = 'Discord AI Generators',
-  description = 'Generate Discord server names, descriptions, channel names, and more with our free AI tools.',
-  keywords = 'Discord AI tools, Discord server name generator, Discord server description, Discord channel names',
+  description = 'Generate Discord server names, descriptions, channel names, and more with our free AI tools. Boost engagement and grow your community.',
+  keywords = 'Discord AI tools, Discord server name generator, Discord server description generator, Discord channel names generator, Discord welcome message generator, Discord bot commands, Discord server optimization',
   ogImage = 'https://discord-ai-generators.com/og-image.jpg',
-  ogImageAlt = 'Discord AI Generators - AI tools for Discord server owners',
+  ogImageAlt = 'Discord AI Generators - Free AI tools for Discord server owners',
   ogType = 'website',
   schema = null,
   alternateLanguages = [],
@@ -76,10 +76,22 @@ const SEO = ({
       'name': 'Discord AI Generators',
       'url': 'https://discord-ai-generators.com',
       'logo': 'https://discord-ai-generators.com/logo.png',
+      'description': 'Free AI-powered tools to help Discord server owners optimize their servers and grow their communities',
+      'slogan': 'Boost your Discord server with AI',
+      'email': 'contact@discord-ai-generators.com',
+      'foundingDate': '2023',
       'sameAs': [
         'https://twitter.com/discordaigenerators',
         'https://facebook.com/discordaigenerators',
-        'https://instagram.com/discordaigenerators'
+        'https://instagram.com/discordaigenerators',
+        'https://github.com/ragekh/discord-generators'
+      ],
+      'knowsAbout': [
+        'Discord Server Management',
+        'AI Content Generation',
+        'Community Building',
+        'Discord Bots',
+        'Server Optimization'
       ]
     };
   };
@@ -91,11 +103,20 @@ const SEO = ({
       '@type': 'WebSite',
       'url': 'https://discord-ai-generators.com',
       'name': 'Discord AI Generators',
-      'description': 'Free AI tools to help Discord server owners optimize their servers',
+      'description': 'Free AI tools to help Discord server owners optimize their servers with AI-generated content',
+      'keywords': 'Discord AI, Discord server tools, Discord generator, Discord server optimization, Discord server growth',
+      'inLanguage': 'en-US',
+      'copyrightYear': new Date().getFullYear(),
       'potentialAction': {
         '@type': 'SearchAction',
         'target': 'https://discord-ai-generators.com/search?q={search_term_string}',
         'query-input': 'required name=search_term_string'
+      },
+      'offers': {
+        '@type': 'Offer',
+        'price': '0',
+        'priceCurrency': 'USD',
+        'availability': 'https://schema.org/InStock'
       }
     };
   };
@@ -105,6 +126,10 @@ const SEO = ({
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
+      <meta name="author" content="Discord AI Generators" />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />

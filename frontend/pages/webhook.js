@@ -69,14 +69,29 @@ export default function WebhookGenerator() {
     '@type': 'WebApplication',
     'name': 'Discord Webhook Generator',
     'url': 'https://discord-ai-generators.com/webhook',
-    'description': 'Create webhook configurations for Discord integrations with our free AI generator. Enter your integration details to get a professional webhook setup instantly!',
+    'description': 'Create powerful Discord webhook configurations for GitHub, Trello, and more with our free AI generator. Set up automated notifications and integrations in seconds!',
     'applicationCategory': 'UtilityApplication',
     'offers': {
       '@type': 'Offer',
       'price': '0',
-      'priceCurrency': 'USD'
+      'priceCurrency': 'USD',
+      'availability': 'https://schema.org/InStock'
     },
-    'operatingSystem': 'Web'
+    'operatingSystem': 'Web',
+    'keywords': 'Discord webhook, GitHub integration, Trello integration, Discord automation, webhook setup',
+    'softwareVersion': '1.0',
+    'screenshot': 'https://discord-ai-generators.com/images/webhook-generator-screenshot.jpg',
+    'featureList': [
+      'GitHub integration configuration',
+      'Trello webhook setup',
+      'Custom API integration',
+      'Notification formatting',
+      'Webhook security best practices'
+    ],
+    'audience': {
+      '@type': 'Audience',
+      'audienceType': 'Discord server administrators'
+    }
   };
 
   // Predefined service suggestions
@@ -110,9 +125,9 @@ export default function WebhookGenerator() {
   return (
     <>
       <SEO
-        title="Discord Webhook Generator - Create Integration Configurations"
-        description="Create webhook configurations for Discord integrations with our free AI generator. Enter your integration details to get a professional webhook setup instantly!"
-        keywords="Discord webhooks, Discord integrations, webhook configuration, Discord API, webhook setup"
+        title="Discord Webhook Generator - Create Custom Integration Configurations"
+        description="Create powerful Discord webhook configurations for GitHub, Trello, and more with our free AI generator. Set up automated notifications and integrations in seconds!"
+        keywords="Discord webhook generator, Discord GitHub integration, Discord Trello integration, Discord automation, Discord notifications, webhook setup guide, Discord API webhooks, custom Discord integrations"
         schema={webhookSchema}
       />
       
