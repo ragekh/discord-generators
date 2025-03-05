@@ -10,44 +10,78 @@
   --discord-light: #F6F6FE;
 }
 
-body {
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  line-height: 1.6;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-discord-dark;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+  
+  /* Improved focus styles for better accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-discord-blue ring-offset-2 ring-offset-white dark:ring-offset-discord-dark;
+  }
 }
 
-.dark body {
-  color: #e4e4e4;
-  background-color: var(--discord-dark);
-}
-
-/* Improved focus styles for better accessibility */
-*:focus {
-  outline: 1px solid var(--discord-blue);
-  outline-offset: 1px;
-  box-shadow: 0 0 0 1px rgba(88, 101, 242, 0.3);
+@layer components {
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-discord font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-discord-blue focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-discord-blue text-white hover:bg-discord-blue-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-discord-menu-gray dark:text-gray-200 dark:hover:bg-gray-700;
+  }
+  
+  .btn-outline {
+    @apply border border-discord-blue text-discord-blue hover:bg-discord-blue hover:text-white dark:border-discord-blue dark:text-discord-blue;
+  }
+  
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-discord-menu-gray rounded-discord shadow-discord transition-shadow duration-200 hover:shadow-discord-hover border border-gray-100 dark:border-gray-700;
+  }
+  
+  /* Form element styles */
+  .form-input {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-discord bg-white dark:bg-discord-input-bg text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-discord-blue;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1;
+  }
+  
+  /* Navigation styles */
+  .nav-link {
+    @apply text-sm hover:text-discord-blue transition px-2;
+  }
+  
+  .nav-link-active {
+    @apply font-bold text-discord-blue;
+  }
 }
 
 /* Skip to content link for keyboard users */
 .skip-to-content {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+  @apply absolute left-[-9999px] top-auto w-px h-px overflow-hidden;
 }
 
 .skip-to-content:focus {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: auto;
-  height: auto;
-  padding: 0.5rem 1rem;
-  background: white;
-  z-index: 9999;
-  border: 2px solid var(--discord-blue);
+  @apply fixed top-0 left-0 w-auto h-auto p-2 bg-white text-gray-900 z-50 border-2 border-discord-blue;
 }
 
 /* Custom scrollbar */
@@ -56,27 +90,56 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.dark ::-webkit-scrollbar-track {
-  background: #2F3136;
+  @apply bg-gray-100 dark:bg-discord-menu-gray;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #4E5058;
-  border-radius: 4px;
+  @apply bg-gray-300 dark:bg-gray-600 rounded;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #aaa;
+  @apply bg-gray-400 dark:bg-discord-blue;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #5865F2;
+/* Animations */
+.fade-in {
+  @apply animate-fade-in;
+}
+
+.slide-up {
+  @apply animate-slide-up;
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Dark mode transition */
+.dark-transition {
+  @apply transition-colors duration-200;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply animate-spin h-5 w-5 text-discord-blue;
+}
+
+/* Tooltip */
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
 }

@@ -1,42 +1,35 @@
-import React from 'react';
 import Head from 'next/head';
 
 /**
- * Performance Optimization Component
- * Adds resource hints and other performance optimizations
+ * Enhanced Performance Optimization component
+ * Implements various performance best practices:
+ * - DNS prefetching
+ * - Preconnect for external resources
+ * - Preloading critical assets
+ * - Critical CSS injection
+ * - Resource hints
  * 
- * @param {Object} props - Component props
- * @param {Array} props.preconnect - Array of URLs to preconnect to
- * @param {Array} props.prefetch - Array of URLs to prefetch
- * @param {Array} props.preload - Array of objects with href, as, and type properties
- * @param {string} props.criticalCSS - Critical CSS to be inlined
- * @returns {JSX.Element} - Head component with performance optimizations
+ * @param {Object} props Component props
+ * @param {Array} props.preconnect Array of URLs to preconnect to
+ * @param {Array} props.preload Array of resources to preload
+ * @param {string} props.criticalCSS Critical CSS to inline
+ * @returns {JSX.Element} Head component with performance optimizations
  */
 const PerformanceOptimization = ({ 
   preconnect = [], 
-  prefetch = [], 
-  preload = [],
-  criticalCSS = ''
+  preload = [], 
+  criticalCSS = '' 
 }) => {
   return (
     <Head>
-      {/* Preconnect to important domains */}
-      {preconnect.map((url, index) => (
-        <link 
-          key={`preconnect-${index}`} 
-          rel="preconnect" 
-          href={url} 
-          crossOrigin="anonymous" 
-        />
-      ))}
+      {/* DNS Prefetching */}
+      <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       
-      {/* Prefetch important resources */}
-      {prefetch.map((url, index) => (
-        <link 
-          key={`prefetch-${index}`} 
-          rel="prefetch" 
-          href={url} 
-        />
+      {/* Preconnect to critical origins */}
+      {preconnect.map((url, index) => (
+        <link key={`preconnect-${index}`} rel="preconnect" href={url} crossOrigin="anonymous" />
       ))}
       
       {/* Preload critical resources */}
@@ -51,6 +44,21 @@ const PerformanceOptimization = ({
         />
       ))}
       
+      {/* Font display optimization */}
+      <link
+        rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        as="style"
+        onLoad="this.onload=null;this.rel='stylesheet'"
+      />
+      <noscript>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+          type="text/css"
+        />
+      </noscript>
+      
       {/* Inline critical CSS */}
       {criticalCSS && (
         <style 
@@ -60,8 +68,13 @@ const PerformanceOptimization = ({
         />
       )}
       
-      {/* Add fetchpriority to important resources */}
-      <meta name="fetchpriority" content="high" />
+      {/* Resource hints */}
+      <link rel="prefetch" href="/server-name" />
+      <link rel="prefetch" href="/server-description" />
+      
+      {/* Core Web Vitals optimization meta tags */}
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta httpEquiv="x-dns-prefetch-control" content="on" />
     </Head>
   );
 };

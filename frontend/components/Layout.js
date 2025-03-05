@@ -4,11 +4,14 @@ import { useState, useEffect } from 'react';
 import AccessibilityFeatures, { announceToScreenReader } from './AccessibilityFeatures';
 import SecurityHeaders from './SecurityHeaders';
 import PerformanceOptimization from './PerformanceOptimization';
+import ErrorBoundary from './ErrorBoundary';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Layout({ children }) {
   const router = useRouter();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   // Close mobile menu when route changes
   useEffect(() => {
@@ -30,6 +33,18 @@ export default function Layout({ children }) {
     }
   }, []);
   
+  // Handle scroll events for header styling
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  
   // Toggle dark mode
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
@@ -41,6 +56,9 @@ export default function Layout({ children }) {
     } else {
       document.documentElement.classList.remove('dark');
     }
+    
+    // Announce to screen readers
+    announceToScreenReader(`${newDarkMode ? 'Dark' : 'Light'} mode enabled`);
   };
   
   // Performance optimization resources
@@ -64,8 +82,23 @@ export default function Layout({ children }) {
     // }
   ];
 
+  // Page transition variants
+  const pageTransitionVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.3, ease: 'easeInOut' }
+    },
+    exit: { 
+      opacity: 0,
+      y: -10,
+      transition: { duration: 0.2, ease: 'easeInOut' }
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-[#2C2F33] dark:text-gray-200">
+    <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-discord-dark dark:text-gray-200">
       {/* Security Headers */}
       <SecurityHeaders />
       
@@ -101,7 +134,11 @@ export default function Layout({ children }) {
       <AccessibilityFeatures />
       
       {/* Header */}
-      <header className="bg-[#5865F2] text-white shadow-md dark:bg-[#36393F]">
+      <header 
+        className={`sticky top-0 z-50 bg-discord-blue text-white shadow-md dark:bg-discord-menu-gray transition-shadow duration-200 ${
+          isScrolled ? 'shadow-lg' : ''
+        }`}
+      >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold hover:text-white/90 transition" aria-label="Discord AI Generators Home">
             Discord AI Generators
@@ -111,7 +148,7 @@ export default function Layout({ children }) {
             {/* Dark mode toggle */}
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-md focus:outline-none"
+              className="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-discord-blue dark:focus:ring-offset-discord-menu-gray"
               aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             >
               {darkMode ? (
@@ -127,7 +164,7 @@ export default function Layout({ children }) {
             
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-md focus:outline-none"
+              className="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-discord-blue dark:focus:ring-offset-discord-menu-gray"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -142,79 +179,79 @@ export default function Layout({ children }) {
           <nav className="hidden md:flex space-x-2 items-center">
             <Link
               href="/server-name"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/server-name' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/server-name' ? 'nav-link-active' : ''}`}
             >
               Server Names
             </Link>
             <Link
               href="/server-description"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/server-description' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/server-description' ? 'nav-link-active' : ''}`}
             >
               Descriptions
             </Link>
             <Link
               href="/channel-name"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/channel-name' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/channel-name' ? 'nav-link-active' : ''}`}
             >
               Channel Names
             </Link>
             <Link
               href="/welcome-message"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/welcome-message' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/welcome-message' ? 'nav-link-active' : ''}`}
             >
               Welcome
             </Link>
             <Link
               href="/bot-command"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/bot-command' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/bot-command' ? 'nav-link-active' : ''}`}
             >
               Bot Commands
             </Link>
             <Link
               href="/role-name"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/role-name' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/role-name' ? 'nav-link-active' : ''}`}
             >
               Roles
             </Link>
             <Link
               href="/server-rules"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/server-rules' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/server-rules' ? 'nav-link-active' : ''}`}
             >
               Rules
             </Link>
             <Link
               href="/announcement"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/announcement' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/announcement' ? 'nav-link-active' : ''}`}
             >
               Announcements
             </Link>
             <Link
               href="/emoji"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/emoji' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/emoji' ? 'nav-link-active' : ''}`}
             >
               Emojis
             </Link>
             <Link
               href="/event"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/event' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/event' ? 'nav-link-active' : ''}`}
             >
               Events
             </Link>
             <Link
               href="/poll"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/poll' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/poll' ? 'nav-link-active' : ''}`}
             >
               Polls
             </Link>
             <Link
               href="/webhook"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/webhook' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/webhook' ? 'nav-link-active' : ''}`}
             >
               Webhooks
             </Link>
             <Link
               href="/moderation"
-              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/moderation' ? 'font-bold' : ''}`}
+              className={`nav-link ${router.pathname === '/moderation' ? 'nav-link-active' : ''}`}
             >
               Moderation
             </Link>
@@ -222,101 +259,121 @@ export default function Layout({ children }) {
         </div>
         
         {/* Mobile navigation */}
-        {isMobileMenuOpen && (
-          <nav className="md:hidden bg-[#4752C4] dark:bg-[#2F3136] py-2">
-            <div className="container mx-auto px-4 flex flex-col space-y-2">
-              <Link
-                href="/server-name"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/server-name' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Server Names
-              </Link>
-              <Link
-                href="/server-description"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/server-description' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Descriptions
-              </Link>
-              <Link
-                href="/channel-name"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/channel-name' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Channel Names
-              </Link>
-              <Link
-                href="/welcome-message"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/welcome-message' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Welcome Messages
-              </Link>
-              <Link
-                href="/bot-command"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/bot-command' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Bot Commands
-              </Link>
-              <Link
-                href="/role-name"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/role-name' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Role Names
-              </Link>
-              <Link
-                href="/server-rules"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/server-rules' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Server Rules
-              </Link>
-              <Link
-                href="/announcement"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/announcement' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Announcements
-              </Link>
-              <Link
-                href="/emoji"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/emoji' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Emojis
-              </Link>
-              
-              {/* New generators */}
-              <Link
-                href="/event"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/event' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Events
-              </Link>
-              <Link
-                href="/poll"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/poll' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Polls
-              </Link>
-              <Link
-                href="/webhook"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/webhook' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Webhooks
-              </Link>
-              <Link
-                href="/moderation"
-                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/moderation' ? 'font-bold bg-[#5865F2]' : ''}`}
-              >
-                Moderation
-              </Link>
-            </div>
-          </nav>
-        )}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.nav 
+              className="md:hidden bg-discord-blue-dark dark:bg-discord-menu-gray py-2"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="container mx-auto px-4 flex flex-col space-y-2">
+                <Link
+                  href="/server-name"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/server-name' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Server Names
+                </Link>
+                <Link
+                  href="/server-description"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/server-description' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Descriptions
+                </Link>
+                <Link
+                  href="/channel-name"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/channel-name' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Channel Names
+                </Link>
+                <Link
+                  href="/welcome-message"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/welcome-message' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Welcome Messages
+                </Link>
+                <Link
+                  href="/bot-command"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/bot-command' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Bot Commands
+                </Link>
+                <Link
+                  href="/role-name"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/role-name' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Role Names
+                </Link>
+                <Link
+                  href="/server-rules"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/server-rules' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Server Rules
+                </Link>
+                <Link
+                  href="/announcement"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/announcement' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Announcements
+                </Link>
+                <Link
+                  href="/emoji"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/emoji' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Emojis
+                </Link>
+                
+                {/* New generators */}
+                <Link
+                  href="/event"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/event' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Events
+                </Link>
+                <Link
+                  href="/poll"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/poll' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Polls
+                </Link>
+                <Link
+                  href="/webhook"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/webhook' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Webhooks
+                </Link>
+                <Link
+                  href="/moderation"
+                  className={`block py-2 px-4 rounded hover:bg-discord-blue transition ${router.pathname === '/moderation' ? 'font-bold bg-discord-blue' : ''}`}
+                >
+                  Moderation
+                </Link>
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </header>
       
-      {/* Main content */}
-      <main id="main-content" className="flex-grow container mx-auto px-4 py-8">
-        {children}
-      </main>
+      {/* Main content with page transitions */}
+      <ErrorBoundary>
+        <main id="main-content" className="flex-grow container mx-auto px-4 py-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={router.pathname}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={pageTransitionVariants}
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </main>
+      </ErrorBoundary>
       
       {/* Footer */}
-      <footer className="bg-[#2C2F33] dark:bg-[#202225] text-white py-6">
+      <footer className="bg-discord-dark dark:bg-discord-darker text-white py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
@@ -326,53 +383,53 @@ export default function Layout({ children }) {
                   href="https://github.com/ragekh/discord-generators"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#5865F2] hover:underline"
+                  className="text-discord-blue hover:underline"
                 >
                   Open Source on GitHub
                 </a>
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
-              <Link href="/" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/" className="text-xs hover:text-discord-blue transition px-1">
                 Home
               </Link>
-              <Link href="/server-name" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/server-name" className="text-xs hover:text-discord-blue transition px-1">
                 Server Names
               </Link>
-              <Link href="/server-description" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/server-description" className="text-xs hover:text-discord-blue transition px-1">
                 Descriptions
               </Link>
-              <Link href="/channel-name" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/channel-name" className="text-xs hover:text-discord-blue transition px-1">
                 Channels
               </Link>
-              <Link href="/welcome-message" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/welcome-message" className="text-xs hover:text-discord-blue transition px-1">
                 Welcome
               </Link>
-              <Link href="/bot-command" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/bot-command" className="text-xs hover:text-discord-blue transition px-1">
                 Bots
               </Link>
-              <Link href="/role-name" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/role-name" className="text-xs hover:text-discord-blue transition px-1">
                 Roles
               </Link>
-              <Link href="/server-rules" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/server-rules" className="text-xs hover:text-discord-blue transition px-1">
                 Rules
               </Link>
-              <Link href="/announcement" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/announcement" className="text-xs hover:text-discord-blue transition px-1">
                 Announcements
               </Link>
-              <Link href="/emoji" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/emoji" className="text-xs hover:text-discord-blue transition px-1">
                 Emojis
               </Link>
-              <Link href="/event" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/event" className="text-xs hover:text-discord-blue transition px-1">
                 Events
               </Link>
-              <Link href="/poll" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/poll" className="text-xs hover:text-discord-blue transition px-1">
                 Polls
               </Link>
-              <Link href="/webhook" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/webhook" className="text-xs hover:text-discord-blue transition px-1">
                 Webhooks
               </Link>
-              <Link href="/moderation" className="text-xs hover:text-[#5865F2] transition px-1">
+              <Link href="/moderation" className="text-xs hover:text-discord-blue transition px-1">
                 Moderation
               </Link>
             </div>
