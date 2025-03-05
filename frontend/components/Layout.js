@@ -117,8 +117,8 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-discord-dark dark:text-gray-200">
       {/* Skip to content link for accessibility */}
-      <a
-        href="#main-content"
+      <a 
+        href="#main-content" 
         className="skip-to-content"
         onClick={() => announceToScreenReader("Skipped to main content")}
       >
@@ -165,13 +165,99 @@ export default function Layout({ children }) {
           isScrolled ? 'shadow-lg' : ''
         }`}
       >
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold hover:text-white/90 transition" aria-label="Discord AI Generators Home">
+        <div className="container mx-auto px-4 py-4 flex items-center">
+          {/* Logo - Left aligned */}
+          <Link href="/" className="text-xl font-bold hover:text-white/90 transition mr-4" aria-label="Discord AI Generators Home">
             Discord AI Generators
           </Link>
           
+          {/* Desktop navigation - Horizontal with smaller text */}
+          <nav className="hidden md:flex flex-wrap items-center space-x-1">
+            <Link
+              href="/server-name"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/server-name' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Names
+            </Link>
+            <Link
+              href="/server-description"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/server-description' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Desc
+            </Link>
+            <Link
+              href="/channel-name"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/channel-name' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Channels
+            </Link>
+            <Link
+              href="/welcome-message"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/welcome-message' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Welcome
+            </Link>
+            <Link
+              href="/bot-command"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/bot-command' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Bots
+            </Link>
+            <Link
+              href="/role-name"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/role-name' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Roles
+            </Link>
+            <Link
+              href="/server-rules"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/server-rules' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Rules
+            </Link>
+            <Link
+              href="/announcement"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/announcement' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Announce
+            </Link>
+            <Link
+              href="/emoji"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/emoji' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Emoji
+            </Link>
+            <Link
+              href="/event"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/event' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Events
+            </Link>
+            <Link
+              href="/poll"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/poll' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Polls
+            </Link>
+            <Link
+              href="/webhook"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/webhook' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Webhooks
+            </Link>
+            <Link
+              href="/moderation"
+              className={`text-xs px-2 py-1 hover:bg-discord-blue-dark rounded transition ${router.pathname === '/moderation' ? 'font-bold bg-discord-blue-dark' : ''}`}
+            >
+              Mod
+            </Link>
+          </nav>
+          
+          {/* Spacer to push dark mode toggle to the right */}
+          <div className="flex-grow"></div>
+          
+          {/* Dark mode toggle with enhanced feedback - Right aligned */}
           <div className="flex items-center space-x-2">
-            {/* Dark mode toggle with enhanced feedback */}
             <button
               onClick={toggleDarkMode}
               className="flex items-center space-x-1 p-2 rounded-md hover:bg-discord-blue-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-discord-blue dark:focus:ring-offset-discord-menu-gray"
@@ -207,88 +293,6 @@ export default function Layout({ children }) {
               </svg>
             </button>
           </div>
-          
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex space-x-2 items-center">
-            <Link
-              href="/server-name"
-              className={`nav-link ${router.pathname === '/server-name' ? 'nav-link-active' : ''}`}
-            >
-              Server Names
-            </Link>
-            <Link
-              href="/server-description"
-              className={`nav-link ${router.pathname === '/server-description' ? 'nav-link-active' : ''}`}
-            >
-              Descriptions
-            </Link>
-            <Link
-              href="/channel-name"
-              className={`nav-link ${router.pathname === '/channel-name' ? 'nav-link-active' : ''}`}
-            >
-              Channel Names
-            </Link>
-            <Link
-              href="/welcome-message"
-              className={`nav-link ${router.pathname === '/welcome-message' ? 'nav-link-active' : ''}`}
-            >
-              Welcome
-            </Link>
-            <Link
-              href="/bot-command"
-              className={`nav-link ${router.pathname === '/bot-command' ? 'nav-link-active' : ''}`}
-            >
-              Bot Commands
-            </Link>
-            <Link
-              href="/role-name"
-              className={`nav-link ${router.pathname === '/role-name' ? 'nav-link-active' : ''}`}
-            >
-              Roles
-            </Link>
-            <Link
-              href="/server-rules"
-              className={`nav-link ${router.pathname === '/server-rules' ? 'nav-link-active' : ''}`}
-            >
-              Rules
-            </Link>
-            <Link
-              href="/announcement"
-              className={`nav-link ${router.pathname === '/announcement' ? 'nav-link-active' : ''}`}
-            >
-              Announcements
-            </Link>
-            <Link
-              href="/emoji"
-              className={`nav-link ${router.pathname === '/emoji' ? 'nav-link-active' : ''}`}
-            >
-              Emojis
-            </Link>
-            <Link
-              href="/event"
-              className={`nav-link ${router.pathname === '/event' ? 'nav-link-active' : ''}`}
-            >
-              Events
-            </Link>
-            <Link
-              href="/poll"
-              className={`nav-link ${router.pathname === '/poll' ? 'nav-link-active' : ''}`}
-            >
-              Polls
-            </Link>
-            <Link
-              href="/webhook"
-              className={`nav-link ${router.pathname === '/webhook' ? 'nav-link-active' : ''}`}
-            >
-              Webhooks
-            </Link>
-            <Link
-              href="/moderation"
-              className={`nav-link ${router.pathname === '/moderation' ? 'nav-link-active' : ''}`}
-            >
-              Moderation
-            </Link>
-          </nav>
         </div>
         
         {/* Mobile navigation */}
@@ -405,10 +409,10 @@ export default function Layout({ children }) {
         </main>
       </ErrorBoundary>
       
-      {/* Footer */}
       {/* Back to Top Button */}
       <BackToTop />
       
+      {/* Footer */}
       <footer className="bg-discord-dark dark:bg-discord-darker text-white py-6">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">

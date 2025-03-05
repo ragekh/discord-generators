@@ -67,11 +67,24 @@
   
   /* Navigation styles */
   .nav-link {
-    @apply text-sm hover:text-discord-blue transition px-2;
+    @apply text-xs hover:text-discord-blue transition px-2;
   }
   
   .nav-link-active {
     @apply font-bold text-discord-blue;
+  }
+  
+  /* Dropdown menu */
+  .dropdown-menu {
+    @apply absolute left-0 mt-1 w-56 origin-top-left bg-discord-blue-dark dark:bg-discord-menu-gray rounded-md shadow-lg z-50 hidden group-hover:block;
+  }
+  
+  .dropdown-item {
+    @apply text-xs px-3 py-2 rounded hover:bg-discord-blue transition;
+  }
+  
+  .dropdown-item-active {
+    @apply font-bold bg-discord-blue/50;
   }
 }
 
