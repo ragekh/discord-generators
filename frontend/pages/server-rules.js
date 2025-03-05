@@ -17,6 +17,44 @@ export default function ServerRulesGenerator() {
   const [error, setError] = useState('');
   const [regenerating, setRegenerating] = useState(false);
   const resultRef = useRef(null);
+  
+  // Predefined server name suggestions
+  const serverNameSuggestions = [
+    "Gaming Hub",
+    "Art Community",
+    "Music Lounge",
+    "Tech Support",
+    "Anime Club",
+    "Movie Buffs",
+    "Book Club",
+    "Coding Den",
+    "Fitness Group",
+    "Foodies Unite"
+  ];
+  
+  // Predefined server focus suggestions
+  const serverFocusSuggestions = [
+    "Gaming community with tournaments and game nights",
+    "Creative art sharing and feedback for artists",
+    "Music discussion, sharing, and recommendations",
+    "Technical support and troubleshooting help",
+    "Anime discussions and watch parties for fans",
+    "Movie reviews and watch-alongs for film enthusiasts",
+    "Book discussions and reading challenges",
+    "Programming help and collaborative coding projects",
+    "Fitness challenges and workout sharing",
+    "Recipe sharing and cooking discussions"
+  ];
+  
+  // Function to add a server name suggestion
+  const addNameSuggestion = (suggestion) => {
+    setServerName(suggestion);
+  };
+  
+  // Function to add a server focus suggestion
+  const addFocusSuggestion = (suggestion) => {
+    setServerFocus(suggestion);
+  };
 
   // Scroll to results when they're generated
   useEffect(() => {
@@ -127,6 +165,23 @@ export default function ServerRulesGenerator() {
               placeholder="e.g., Gaming Legends, Art Haven, Tech Support"
               required
             />
+            
+            {/* Server Name Suggestions */}
+            <div className="mt-2">
+              <p className="text-sm text-gray-600 mb-2">Popular server names (click to use):</p>
+              <div className="flex flex-wrap gap-2">
+                {serverNameSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => addNameSuggestion(suggestion)}
+                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           
           <div className="mb-4">
@@ -139,6 +194,23 @@ export default function ServerRulesGenerator() {
               placeholder="Describe your server's purpose, community, and activities. What kind of content is shared? What's the age range of your members?"
               required
             />
+            
+            {/* Server Focus Suggestions */}
+            <div className="mb-4">
+              <p className="text-sm text-gray-600 mb-2">Popular server focuses (click to use):</p>
+              <div className="flex flex-wrap gap-2">
+                {serverFocusSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => addFocusSuggestion(suggestion)}
+                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           
           <div className="mb-4">

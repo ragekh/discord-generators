@@ -146,6 +146,12 @@ export default function Layout({ children }) {
             >
               Announcements
             </Link>
+            <Link
+              href="/emoji"
+              className={`hover:text-white/90 transition ${router.pathname === '/emoji' ? 'font-bold' : ''}`}
+            >
+              Emojis
+            </Link>
           </nav>
         </div>
         
@@ -201,6 +207,12 @@ export default function Layout({ children }) {
               >
                 Announcements
               </Link>
+              <Link
+                href="/emoji"
+                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/emoji' ? 'font-bold bg-[#5865F2]' : ''}`}
+              >
+                Emojis
+              </Link>
             </div>
           </nav>
         )}
@@ -255,6 +267,9 @@ export default function Layout({ children }) {
               </Link>
               <Link href="/announcement" className="text-sm hover:text-[#5865F2] transition">
                 Announcements
+              </Link>
+              <Link href="/emoji" className="text-sm hover:text-[#5865F2] transition">
+                Emojis
               </Link>
             </div>
           </div>

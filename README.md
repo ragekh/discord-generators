@@ -14,6 +14,10 @@ This project is designed to be easily adaptable for other AI generator applicati
 - **Role Name Generator**: Create thematic role names that fit your server
 - **Server Rules Generator**: Generate clear and comprehensive server rules
 - **Announcement Generator**: Create engaging announcements for your server
+- **Event Generator**: Create event descriptions and schedules for Discord events
+- **Poll Generator**: Create engaging polls for Discord servers
+- **Webhook Generator**: Create webhook configurations for Discord integrations
+- **Moderation Response Generator**: Create templates for moderator responses to rule violations
 
 ## Tech Stack
 

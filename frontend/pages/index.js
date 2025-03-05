@@ -8,10 +8,16 @@ import {
   RoleNameIcon,
   ServerRulesIcon,
   AnnouncementIcon,
+  EmojiIcon,
+  EventIcon,
+  PollIcon,
+  WebhookIcon,
+  ModerationIcon,
   DiscordLogo
 } from '../components/Icons';
 import SEO from '../components/SEO';
 import FAQSchema from '../components/FAQSchema';
+import FAQ from '../components/FAQ';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import HowToSchema from '../components/HowToSchema';
 import ProTips from '../components/ProTips';
@@ -21,7 +27,7 @@ export default function Home() {
   const faqs = [
     {
       question: "What are Discord AI Generators?",
-      answer: "Discord AI Generators are free AI-powered tools designed to help Discord server owners optimize their servers. Our tools can generate server names, server descriptions, channel names, welcome messages, bot commands, role names, server rules, and announcements."
+      answer: "Discord AI Generators are free AI-powered tools designed to help Discord server owners optimize their servers. Our tools can generate server names, server descriptions, channel names, welcome messages, bot commands, role names, server rules, announcements, custom emoji ideas, event descriptions, engaging polls, webhook configurations for integrations, and moderation response templates for rule violations."
     },
     {
       question: "Are these tools really free?",
@@ -99,7 +105,7 @@ export default function Home() {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4">Discord AI Generators</h1>
         <p className="text-lg mb-10 text-center max-w-2xl mx-auto px-4">
-          Boost your Discord server with our free AI-powered tools. Create unique server names, compelling descriptions, organized channel names, and engaging welcome messages in seconds!
+          Boost your Discord server with our free AI-powered tools. Create unique server names, compelling descriptions, organized channel names, engaging welcome messages, exciting event descriptions, interactive polls, powerful webhook integrations, and professional moderation responses in seconds!
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
@@ -166,6 +172,46 @@ export default function Home() {
             <h2 className="text-xl font-semibold mb-2">Announcement Generator</h2>
             <p className="text-gray-600 text-sm">Create engaging announcements for your server</p>
           </Link>
+          
+          <Link href="/emoji" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+            <div className="text-[#5865F2] mb-3">
+              <EmojiIcon />
+            </div>
+            <h2 className="text-xl font-semibold mb-2">Emoji Generator</h2>
+            <p className="text-gray-600 text-sm">Create custom emoji ideas for your server</p>
+          </Link>
+          
+          <Link href="/event" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+            <div className="text-[#5865F2] mb-3">
+              <EventIcon />
+            </div>
+            <h2 className="text-xl font-semibold mb-2">Event Generator</h2>
+            <p className="text-gray-600 text-sm">Create event descriptions and schedules for Discord events</p>
+          </Link>
+          
+          <Link href="/poll" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+            <div className="text-[#5865F2] mb-3">
+              <PollIcon />
+            </div>
+            <h2 className="text-xl font-semibold mb-2">Poll Generator</h2>
+            <p className="text-gray-600 text-sm">Create engaging polls for Discord servers</p>
+          </Link>
+          
+          <Link href="/webhook" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+            <div className="text-[#5865F2] mb-3">
+              <WebhookIcon />
+            </div>
+            <h2 className="text-xl font-semibold mb-2">Webhook Generator</h2>
+            <p className="text-gray-600 text-sm">Create webhook configurations for Discord integrations</p>
+          </Link>
+          
+          <Link href="/moderation" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+            <div className="text-[#5865F2] mb-3">
+              <ModerationIcon />
+            </div>
+            <h2 className="text-xl font-semibold mb-2">Moderation Response Generator</h2>
+            <p className="text-gray-600 text-sm">Create templates for moderator responses to rule violations</p>
+          </Link>
         </div>
         
         <div className="mt-12 bg-[#F6F6FE] p-6 rounded-lg max-w-4xl mx-auto">
@@ -221,7 +267,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-        
         {/* Discord Tips Section */}
         <div className="mt-12 max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold mb-4 text-center">Discord Server Tips</h2>
@@ -229,6 +274,11 @@ export default function Home() {
           
           {/* Import and use the ProTips component */}
           <ProTips category="general" />
+        </div>
+        
+        {/* FAQ Section */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <FAQ faqs={faqs} />
         </div>
       </div>
     </>

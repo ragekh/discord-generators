@@ -16,6 +16,25 @@ export default function AnnouncementGenerator() {
   const [error, setError] = useState('');
   const [regenerating, setRegenerating] = useState(false);
   const resultRef = useRef(null);
+  
+  // Predefined announcement details suggestions
+  const detailsSuggestions = [
+    "New server features including voice channels and custom roles",
+    "Community game night this Friday at 8 PM EST, everyone welcome",
+    "Server reached 1,000 members milestone, special events planned",
+    "Updated rules regarding content sharing and moderation",
+    "New partnership with related Discord community for cross-events",
+    "Introducing new moderators to help manage our growing community",
+    "Scheduled maintenance on Saturday from 2-4 PM UTC",
+    "Weekly art contest with prizes for top three submissions",
+    "Holiday special events throughout December with daily activities",
+    "Server redesign with new channels and category organization"
+  ];
+  
+  // Function to add a details suggestion
+  const addDetailsSuggestion = (suggestion) => {
+    setDetails(suggestion);
+  };
 
   // Scroll to results when they're generated
   useEffect(() => {
@@ -153,6 +172,23 @@ export default function AnnouncementGenerator() {
               placeholder="Provide specific details about your announcement. Include any relevant dates, times, requirements, or other information that should be included."
               required
             />
+            
+            {/* Announcement Details Suggestions */}
+            <div className="mb-4">
+              <p className="text-sm text-gray-600 mb-2">Example announcements (click to use):</p>
+              <div className="flex flex-wrap gap-2">
+                {detailsSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => addDetailsSuggestion(suggestion)}
+                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                  >
+                    {suggestion.length > 40 ? suggestion.substring(0, 40) + '...' : suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           
           <button

@@ -51,11 +51,26 @@ async function generateText(prompt, options = {}) {
     // Merge default options with provided options
     const mergedOptions = { ...defaultOptions, ...options };
     
+    // Log the request for debugging
+    console.log('AI Request:', {
+      model: mergedOptions.model,
+      max_tokens: mergedOptions.max_tokens,
+      promptLength: prompt.length
+    });
+    
     const response = await openai.chat.completions.create({
       model: mergedOptions.model,
       messages: [{ role: 'user', content: prompt }],
       max_tokens: mergedOptions.max_tokens,
+      temperature: 0.7, // Add temperature for more consistent results
     });
+    
+    // Log the response for debugging
+    console.log('AI Response Status:', response.choices ? 'Success' : 'No choices returned');
+    
+    if (!response.choices || response.choices.length === 0) {
+      throw new Error('No response generated from AI');
+    }
     
     const result = response.choices[0].message.content.trim();
     
@@ -68,7 +83,19 @@ async function generateText(prompt, options = {}) {
     return result;
   } catch (error) {
     console.error('API Error:', error);
-    throw new Error('Failed to generate content');
+    
+    // Provide more detailed error information
+    const errorMessage = error.response?.data?.error?.message ||
+                         error.message ||
+                         'Failed to generate content';
+    
+    console.error('Error Details:', {
+      message: errorMessage,
+      status: error.response?.status,
+      data: error.response?.data
+    });
+    
+    throw new Error(errorMessage);
   }
 }
 

@@ -16,6 +16,30 @@ export default function RoleNameGenerator() {
   const [error, setError] = useState('');
   const [regenerating, setRegenerating] = useState(false);
   const resultRef = useRef(null);
+  
+  // Predefined server theme suggestions
+  const serverThemeSuggestions = [
+    "Gaming",
+    "Art",
+    "Music",
+    "Technology",
+    "Anime",
+    "Movies",
+    "Books",
+    "Programming",
+    "Fitness",
+    "Food",
+    "Education",
+    "Science",
+    "Photography",
+    "Roleplay",
+    "Community"
+  ];
+  
+  // Function to add a server theme suggestion
+  const addThemeSuggestion = (suggestion) => {
+    setServerTheme(suggestion);
+  };
 
   // Scroll to results when they're generated
   useEffect(() => {
@@ -128,6 +152,23 @@ export default function RoleNameGenerator() {
               placeholder="e.g., Gaming, Art, Tech Support, Anime, Music"
               required
             />
+            
+            {/* Server Theme Suggestions */}
+            <div className="mt-2">
+              <p className="text-sm text-gray-600 mb-2">Popular server themes (click to use):</p>
+              <div className="flex flex-wrap gap-2">
+                {serverThemeSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => addThemeSuggestion(suggestion)}
+                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           
           <div className="mb-4">

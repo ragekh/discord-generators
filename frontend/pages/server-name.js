@@ -15,6 +15,34 @@ export default function ServerNameGenerator() {
   const [error, setError] = useState('');
   const [regenerating, setRegenerating] = useState(false);
   const resultRef = useRef(null);
+  
+  // Predefined keyword suggestions
+  const keywordSuggestions = [
+    "Gaming",
+    "Art",
+    "Music",
+    "Technology",
+    "Anime",
+    "Movies",
+    "Books",
+    "Programming",
+    "Fitness",
+    "Food",
+    "Travel",
+    "Photography",
+    "Memes",
+    "Education",
+    "Science"
+  ];
+  
+  // Function to add a suggestion to the keywords
+  const addSuggestion = (suggestion) => {
+    if (keywords.trim() === '') {
+      setKeywords(suggestion);
+    } else if (!keywords.toLowerCase().includes(suggestion.toLowerCase())) {
+      setKeywords(prev => `${prev}, ${suggestion}`);
+    }
+  };
 
   // Scroll to results when they're generated
   useEffect(() => {
@@ -109,6 +137,24 @@ export default function ServerNameGenerator() {
             placeholder="e.g., gaming, anime, art community, tech support"
             required
           />
+          
+          {/* Keyword Suggestions */}
+          <div className="mb-4">
+            <p className="text-sm text-gray-600 mb-2">Popular keywords (click to add):</p>
+            <div className="flex flex-wrap gap-2">
+              {keywordSuggestions.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  type="button"
+                  onClick={() => addSuggestion(suggestion)}
+                  className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
+          
           <button
             type="submit"
             className="w-full bg-[#5865F2] text-white p-3 rounded-md hover:bg-[#4752C4] transition font-medium flex justify-center items-center"

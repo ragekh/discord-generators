@@ -7,7 +7,7 @@ import React from 'react';
  * @param {string} props.color - Color of the spinner
  * @returns {JSX.Element} - Loading spinner component
  */
-const LoadingSpinner = ({ size = 'md', color = '#F1641E' }) => {
+const LoadingSpinner = ({ size = 'md', color = '#5865F2' }) => {
   // Determine the size of the spinner
   const sizeClass = {
     sm: 'w-4 h-4',

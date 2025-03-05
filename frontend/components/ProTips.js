@@ -212,6 +212,116 @@ const ProTips = ({ category = 'general', autoRotate = true, interval = 10000 }) 
         title: "Use Embeds for Polish",
         content: "For major announcements, consider using bot-generated embeds for a more professional look."
       }
+    ],
+    emoji: [
+      {
+        title: "Follow Discord Naming Conventions",
+        content: "Discord emoji names must be lowercase with no spaces. Use underscores instead (e.g., happy_face, cool_cat)."
+      },
+      {
+        title: "Optimize for Small Size",
+        content: "Emojis display at 32x32 pixels in chat. Ensure your designs are clear and recognizable at this small size."
+      },
+      {
+        title: "Create Themed Sets",
+        content: "Develop emoji sets that match your server's theme for a cohesive visual identity."
+      },
+      {
+        title: "Balance Reaction Types",
+        content: "Include a mix of reaction emojis (expressing emotions) and server-specific emotes (representing inside jokes or themes)."
+      },
+      {
+        title: "Consider Animated Emojis",
+        content: "For boosted servers, animated emojis can add extra visual interest. Keep animations simple and looping smoothly."
+      }
+    ],
+    event: [
+      {
+        title: "Use Discord's Event Scheduler",
+        content: "Take advantage of Discord's built-in event scheduler feature, which allows members to RSVP and receive notifications."
+      },
+      {
+        title: "Include Clear Time Information",
+        content: "Always specify the date, time, and timezone for your events to avoid confusion for international members."
+      },
+      {
+        title: "Create Event Graphics",
+        content: "Eye-catching graphics or banners can increase visibility and excitement for your upcoming events."
+      },
+      {
+        title: "Send Reminders",
+        content: "Schedule reminders 24 hours and 1 hour before events to maximize attendance and participation."
+      },
+      {
+        title: "Plan Interactive Elements",
+        content: "Include interactive elements like polls, Q&A sessions, or breakout rooms to keep participants engaged during events."
+      }
+    ],
+    poll: [
+      {
+        title: "Keep Questions Clear and Specific",
+        content: "Avoid ambiguous or double-barreled questions. Each poll should focus on a single, clearly defined topic."
+      },
+      {
+        title: "Provide Balanced Options",
+        content: "Ensure your poll options cover the full range of possible answers without bias toward any particular outcome."
+      },
+      {
+        title: "Use Reaction Emojis",
+        content: "Discord's reaction feature is perfect for polls. Use distinct emojis that clearly represent each option."
+      },
+      {
+        title: "Set a Voting Deadline",
+        content: "Specify when voting will close to create a sense of urgency and ensure timely participation."
+      },
+      {
+        title: "Share Poll Results",
+        content: "After the poll closes, share the results and any actions that will be taken based on the feedback."
+      }
+    ],
+    webhook: [
+      {
+        title: "Use Descriptive Names and Avatars",
+        content: "Give your webhook a name and avatar that clearly identifies its source and purpose to your server members."
+      },
+      {
+        title: "Secure Your Webhook URLs",
+        content: "Treat webhook URLs like passwords. Never share them publicly or commit them to public repositories."
+      },
+      {
+        title: "Use Embeds for Structure",
+        content: "Webhook embeds allow for more visually appealing and structured messages than plain text."
+      },
+      {
+        title: "Filter Relevant Events",
+        content: "Configure your webhook to only send notifications for relevant events to prevent channel spam."
+      },
+      {
+        title: "Create Dedicated Channels",
+        content: "Create specific channels for different webhook integrations to keep notifications organized."
+      }
+    ],
+    moderation: [
+      {
+        title: "Be Clear and Specific",
+        content: "Clearly state which rule was violated and how, avoiding vague language that could lead to confusion."
+      },
+      {
+        title: "Maintain Professionalism",
+        content: "Keep a professional tone even when dealing with frustrating situations. Avoid sarcasm or condescension."
+      },
+      {
+        title: "Document Moderation Actions",
+        content: "Keep records of all moderation actions in a private channel for consistency and accountability."
+      },
+      {
+        title: "Explain the 'Why'",
+        content: "Explain why rules exist and how violations impact the community to help members understand the purpose."
+      },
+      {
+        title: "Provide Appeal Information",
+        content: "For serious actions like bans, always provide information on how to appeal if your server allows appeals."
+      }
     ]
   };
   

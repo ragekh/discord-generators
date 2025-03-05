@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --etsy-orange: #F1641E;
-  --etsy-orange-dark: #e05a1c;
-  --etsy-navy: #232347;
+  --discord-blue: #5865F2;
+  --discord-blue-dark: #4752C4;
+  --discord-dark: #2C2F33;
 }
 
 body {
@@ -16,9 +16,9 @@ body {
 
 /* Improved focus styles for better accessibility */
 *:focus {
-  outline: 1px solid var(--etsy-orange);
+  outline: 1px solid var(--discord-blue);
   outline-offset: 1px;
-  box-shadow: 0 0 0 1px rgba(241, 100, 30, 0.3);
+  box-shadow: 0 0 0 1px rgba(88, 101, 242, 0.3);
 }
 
 /* Skip to content link for keyboard users */
@@ -40,7 +40,7 @@ body {
   padding: 0.5rem 1rem;
   background: white;
   z-index: 9999;
-  border: 2px solid var(--etsy-orange);
+  border: 2px solid var(--discord-blue);
 }
 
 /* Custom scrollbar */

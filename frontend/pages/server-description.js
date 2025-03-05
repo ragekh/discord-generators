@@ -16,6 +16,48 @@ export default function ServerDescriptionGenerator() {
   const [error, setError] = useState('');
   const [regenerating, setRegenerating] = useState(false);
   const resultRef = useRef(null);
+  
+  // Predefined server name suggestions
+  const serverNameSuggestions = [
+    "Gaming Hub",
+    "Art Community",
+    "Music Lounge",
+    "Tech Support",
+    "Anime Club",
+    "Movie Buffs",
+    "Book Club",
+    "Coding Den",
+    "Fitness Group",
+    "Foodies Unite"
+  ];
+  
+  // Predefined server details suggestions
+  const detailsSuggestions = [
+    "Community Events",
+    "Voice Chat",
+    "Friendly Atmosphere",
+    "Active Moderators",
+    "Beginner Friendly",
+    "Regular Giveaways",
+    "International",
+    "Streaming",
+    "Tutorials",
+    "Collaborations"
+  ];
+  
+  // Function to add a server name suggestion
+  const addNameSuggestion = (suggestion) => {
+    setServerName(suggestion);
+  };
+  
+  // Function to add a details suggestion
+  const addDetailsSuggestion = (suggestion) => {
+    if (description.trim() === '') {
+      setDescription(suggestion);
+    } else if (!description.toLowerCase().includes(suggestion.toLowerCase())) {
+      setDescription(prev => `${prev}, ${suggestion}`);
+    }
+  };
 
   // Scroll to results when they're generated
   useEffect(() => {
@@ -112,6 +154,23 @@ export default function ServerDescriptionGenerator() {
               placeholder="e.g., Gaming Legends, Art Haven, Tech Support"
               required
             />
+            
+            {/* Server Name Suggestions */}
+            <div className="mt-2">
+              <p className="text-sm text-gray-600 mb-2">Popular server names (click to use):</p>
+              <div className="flex flex-wrap gap-2">
+                {serverNameSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => addNameSuggestion(suggestion)}
+                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           
           <div className="mb-4">
@@ -124,6 +183,23 @@ export default function ServerDescriptionGenerator() {
               placeholder="Describe your server's purpose, community, activities, and what makes it special. Include any specific features, events, or rules you want to highlight."
               required
             />
+            
+            {/* Server Details Suggestions */}
+            <div className="mb-4">
+              <p className="text-sm text-gray-600 mb-2">Popular features (click to add):</p>
+              <div className="flex flex-wrap gap-2">
+                {detailsSuggestions.map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    type="button"
+                    onClick={() => addDetailsSuggestion(suggestion)}
+                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
           
           <button

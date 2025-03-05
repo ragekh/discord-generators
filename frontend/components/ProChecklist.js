@@ -73,6 +73,41 @@ const ProChecklist = ({ type = 'general' }) => {
       { id: 'a3', text: 'Use formatting for readability (headers, bold, etc.)' },
       { id: 'a4', text: 'Only use @everyone/@here for important announcements' },
       { id: 'a5', text: 'Pin critical announcements for future reference' }
+    ],
+    emoji: [
+      { id: 'e1', text: 'Keep emoji names lowercase with underscores instead of spaces' },
+      { id: 'e2', text: 'Ensure emoji designs are clear at 32x32 pixel size' },
+      { id: 'e3', text: 'Create emojis that match your server theme' },
+      { id: 'e4', text: 'Include a mix of reaction emojis and server-specific emotes' },
+      { id: 'e5', text: 'Test emojis in different contexts before finalizing' }
+    ],
+    event: [
+      { id: 'ev1', text: 'Use Discord\'s event scheduler feature for better visibility' },
+      { id: 'ev2', text: 'Include clear date, time, and timezone information' },
+      { id: 'ev3', text: 'Create an eye-catching title and description' },
+      { id: 'ev4', text: 'List any requirements or preparations for participants' },
+      { id: 'ev5', text: 'Schedule reminders before the event starts' }
+    ],
+    poll: [
+      { id: 'p1', text: 'Keep poll questions clear and focused on a single topic' },
+      { id: 'p2', text: 'Provide balanced and comprehensive answer options' },
+      { id: 'p3', text: 'Use distinct emoji reactions for voting options' },
+      { id: 'p4', text: 'Set a clear deadline for when voting will close' },
+      { id: 'p5', text: 'Share results and actions after the poll concludes' }
+    ],
+    webhook: [
+      { id: 'w1', text: 'Use descriptive webhook names and avatars' },
+      { id: 'w2', text: 'Keep webhook URLs secure and private' },
+      { id: 'w3', text: 'Create dedicated channels for different integrations' },
+      { id: 'w4', text: 'Configure filters to only send relevant notifications' },
+      { id: 'w5', text: 'Use embeds for more structured and visually appealing messages' }
+    ],
+    moderation: [
+      { id: 'm1', text: 'Clearly identify which rule was violated and how' },
+      { id: 'm2', text: 'Maintain a professional and respectful tone' },
+      { id: 'm3', text: 'Explain why the rule exists and its importance' },
+      { id: 'm4', text: 'Provide appropriate consequences based on severity' },
+      { id: 'm5', text: 'Include appeal information for serious actions' }
     ]
   };
   
