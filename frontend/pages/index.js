@@ -109,153 +109,152 @@ export default function Home() {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
-          <Link href="/server-name" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/server-name" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <ServerNameIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Server Name Generator</h2>
-            <p className="text-gray-600 text-sm">Create a unique and memorable name for your Discord server</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create a unique and memorable name for your Discord server</p>
           </Link>
-          
-          <Link href="/server-description" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/server-description" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <ServerDescriptionIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Server Description Generator</h2>
-            <p className="text-gray-600 text-sm">Write compelling server descriptions that attract new members</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Write compelling server descriptions that attract new members</p>
           </Link>
           
-          <Link href="/channel-name" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/channel-name" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <ChannelNameIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Channel Name Generator</h2>
-            <p className="text-gray-600 text-sm">Create organized and thematic channel names</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create organized and thematic channel names</p>
           </Link>
           
-          <Link href="/welcome-message" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/welcome-message" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <WelcomeMessageIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Welcome Message Generator</h2>
-            <p className="text-gray-600 text-sm">Create engaging welcome messages for new members</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create engaging welcome messages for new members</p>
           </Link>
 
-          <Link href="/bot-command" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/bot-command" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <BotCommandIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Bot Command Generator</h2>
-            <p className="text-gray-600 text-sm">Generate custom bot commands and responses</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Generate custom bot commands and responses</p>
           </Link>
           
-          <Link href="/role-name" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/role-name" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <RoleNameIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Role Name Generator</h2>
-            <p className="text-gray-600 text-sm">Create thematic role names that fit your server</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create thematic role names that fit your server</p>
           </Link>
           
-          <Link href="/server-rules" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/server-rules" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <ServerRulesIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Server Rules Generator</h2>
-            <p className="text-gray-600 text-sm">Generate clear and comprehensive server rules</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Generate clear and comprehensive server rules</p>
           </Link>
           
-          <Link href="/announcement" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/announcement" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <AnnouncementIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Announcement Generator</h2>
-            <p className="text-gray-600 text-sm">Create engaging announcements for your server</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create engaging announcements for your server</p>
           </Link>
           
-          <Link href="/emoji" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/emoji" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <EmojiIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Emoji Generator</h2>
-            <p className="text-gray-600 text-sm">Create custom emoji ideas for your server</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create custom emoji ideas for your server</p>
           </Link>
           
-          <Link href="/event" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/event" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <EventIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Event Generator</h2>
-            <p className="text-gray-600 text-sm">Create event descriptions and schedules for Discord events</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create event descriptions and schedules for Discord events</p>
           </Link>
           
-          <Link href="/poll" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/poll" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <PollIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Poll Generator</h2>
-            <p className="text-gray-600 text-sm">Create engaging polls for Discord servers</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create engaging polls for Discord servers</p>
           </Link>
           
-          <Link href="/webhook" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/webhook" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <WebhookIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Webhook Generator</h2>
-            <p className="text-gray-600 text-sm">Create webhook configurations for Discord integrations</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create webhook configurations for Discord integrations</p>
           </Link>
           
-          <Link href="/moderation" className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 flex flex-col items-center">
+          <Link href="/moderation" className="p-6 bg-white dark:bg-[#36393F] rounded-lg shadow-md hover:shadow-lg transition border border-gray-100 dark:border-gray-700 flex flex-col items-center">
             <div className="text-[#5865F2] mb-3">
               <ModerationIcon />
             </div>
             <h2 className="text-xl font-semibold mb-2">Moderation Response Generator</h2>
-            <p className="text-gray-600 text-sm">Create templates for moderator responses to rule violations</p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm">Create templates for moderator responses to rule violations</p>
           </Link>
         </div>
         
-        <div className="mt-12 bg-[#F6F6FE] p-6 rounded-lg max-w-4xl mx-auto">
+        <div className="mt-12 bg-[#F6F6FE] dark:bg-[#2F3136] p-6 rounded-lg max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold mb-4">Why Use Our AI Tools?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
             <div className="p-4">
               <h3 className="font-semibold text-[#5865F2] mb-2">Save Time</h3>
-              <p className="text-sm">Generate professional content in seconds instead of spending hours writing</p>
+              <p className="text-sm dark:text-gray-300">Generate professional content in seconds instead of spending hours writing</p>
             </div>
             <div className="p-4">
               <h3 className="font-semibold text-[#5865F2] mb-2">Increase Engagement</h3>
-              <p className="text-sm">Create clear, engaging content that helps members interact more with your server</p>
+              <p className="text-sm dark:text-gray-300">Create clear, engaging content that helps members interact more with your server</p>
             </div>
             <div className="p-4">
               <h3 className="font-semibold text-[#5865F2] mb-2">Stand Out</h3>
-              <p className="text-sm">Make your server more professional and appealing compared to others</p>
+              <p className="text-sm dark:text-gray-300">Make your server more professional and appealing compared to others</p>
             </div>
           </div>
         </div>
         
         {/* Discord Statistics Section */}
-        <div className="mt-12 bg-white border border-gray-200 p-6 rounded-lg max-w-4xl mx-auto">
+        <div className="mt-12 bg-white dark:bg-[#36393F] border border-gray-200 dark:border-gray-700 p-6 rounded-lg max-w-4xl mx-auto">
           <h2 className="text-2xl font-semibold mb-6 text-center">Discord Server Statistics</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <div className="text-center">
               <div className="text-3xl font-bold text-[#5865F2] mb-2">70%</div>
-              <p className="text-sm text-gray-600">of users prefer servers with clear organization</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">of users prefer servers with clear organization</p>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-[#5865F2] mb-2">58%</div>
-              <p className="text-sm text-gray-600">higher retention with welcoming onboarding</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">higher retention with welcoming onboarding</p>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-[#5865F2] mb-2">3.2x</div>
-              <p className="text-sm text-gray-600">more engagement in well-structured servers</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">more engagement in well-structured servers</p>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-[#5865F2] mb-2">45%</div>
-              <p className="text-sm text-gray-600">of users check server rules before engaging</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">of users check server rules before engaging</p>
             </div>
           </div>
           
-          <div className="prose prose-sm max-w-none text-gray-700">
+          <div className="prose prose-sm max-w-none text-gray-700 dark:text-gray-300">
             <p className="mb-3">
               <strong>Effective server organization is crucial for Discord success.</strong> With millions of servers competing for attention, standing out requires strategic optimization. Discord's algorithm and user behavior favor servers with clear organization, engaging content, and active communities.
             </p>

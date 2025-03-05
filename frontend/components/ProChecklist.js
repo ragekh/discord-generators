@@ -130,18 +130,18 @@ const ProChecklist = ({ type = 'general' }) => {
   const progress = checklist.length > 0 ? Math.round((checkedCount / checklist.length) * 100) : 0;
   
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 my-4">
-      <h3 className="font-semibold text-gray-800 mb-3">Pro Checklist</h3>
+    <div className="bg-white dark:bg-[#36393F] border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-4">
+      <h3 className="font-semibold text-gray-800 dark:text-gray-200 mb-3">Pro Checklist</h3>
       
       {/* Progress bar */}
-      <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-        <div 
-          className="bg-[#5865F2] h-2.5 rounded-full transition-all duration-300 ease-in-out" 
+      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 mb-4">
+        <div
+          className="bg-[#5865F2] h-2.5 rounded-full transition-all duration-300 ease-in-out"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
       
-      <p className="text-sm text-gray-500 mb-4">
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
         {progress}% complete ({checkedCount}/{checklist.length})
       </p>
       
@@ -154,9 +154,9 @@ const ProChecklist = ({ type = 'general' }) => {
               id={item.id}
               checked={!!checkedItems[item.id]}
               onChange={() => handleCheckboxChange(item.id)}
-              className="mt-1 h-4 w-4 text-[#5865F2] rounded border-gray-300 focus:ring-[#5865F2]"
+              className="mt-1 h-4 w-4 text-[#5865F2] rounded border-gray-300 dark:border-gray-600 focus:ring-[#5865F2]"
             />
-            <label htmlFor={item.id} className="ml-2 text-sm text-gray-700 cursor-pointer">
+            <label htmlFor={item.id} className="ml-2 text-sm text-gray-700 dark:text-gray-300 cursor-pointer">
               {item.text}
             </label>
           </li>
@@ -164,8 +164,8 @@ const ProChecklist = ({ type = 'general' }) => {
       </ul>
       
       {progress === 100 && (
-        <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
-          <p className="text-sm text-green-700 font-medium">
+        <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md">
+          <p className="text-sm text-green-700 dark:text-green-400 font-medium">
             Great job! You've completed all the best practices for this section.
           </p>
         </div>

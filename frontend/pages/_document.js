@@ -14,6 +14,24 @@ export default function Document() {
         <meta name="application-name" content="Discord AI Generators" />
         <meta name="apple-mobile-web-app-title" content="Discord AI Generators" />
         
+        {/* Dark mode script - runs before page load to prevent flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                // Check for saved dark mode preference or use system preference
+                const darkMode = localStorage.getItem('darkMode') === 'true' ||
+                  (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                
+                // Apply dark mode class if needed
+                if (darkMode) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+        
         {/* Favicon and PWA */}
         <link rel="icon" href="/favicon.ico" />
         {/* Removed references to non-existent icon files */}

@@ -104,7 +104,7 @@ export default function PollGenerator() {
       
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-[#F6F6FE] rounded-full mb-4">
+          <div className="inline-block p-3 bg-[#F6F6FE] dark:bg-[#2F3136] rounded-full mb-4">
             <div className="text-[#5865F2]">
               <PollIcon />
             </div>
@@ -115,26 +115,26 @@ export default function PollGenerator() {
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mb-6">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 mb-6">
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Poll Topic:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Poll Topic:</label>
             <input
               type="text"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               placeholder="What would you like to poll your community about?"
               required
             />
             <div className="mt-2">
-              <p className="text-sm text-gray-600 mb-2">Suggestions:</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Suggestions:</p>
               <div className="flex flex-wrap gap-2">
                 {pollTopicSuggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => setTopic(suggestion)}
-                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                    className="text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-1 px-2 rounded transition"
                   >
                     {suggestion}
                   </button>
@@ -144,11 +144,11 @@ export default function PollGenerator() {
           </div>
           
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Additional Details:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Additional Details:</label>
             <textarea
               value={details}
               onChange={(e) => setDetails(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md mb-4 focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md mb-4 focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               rows="4"
               placeholder="Provide any additional context or specific options you'd like to include in the poll. The more details you provide, the more tailored your poll will be."
               required
@@ -185,22 +185,22 @@ export default function PollGenerator() {
         {/* Results Section */}
         <div ref={resultRef}>
           {(result || (loading && regenerating)) && (
-            <div className={`bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
+            <div className={`bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-[#2C2F33]">
+                <h2 className="text-xl font-semibold text-[#2C2F33] dark:text-gray-200">
                   {loading && regenerating ? 'Regenerating Poll...' : 'Generated Poll:'}
                 </h2>
                 {!loading && <CopyButton text={result} />}
               </div>
-              <div className="bg-gray-50 p-4 rounded-md border border-gray-200 relative">
+              <div className="bg-gray-50 dark:bg-[#2F3136] p-4 rounded-md border border-gray-200 dark:border-gray-700 relative">
                 {loading && regenerating && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+                  <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-[#36393F] bg-opacity-70 z-10">
                     <LoadingSpinner size="lg" color="#5865F2" />
                   </div>
                 )}
-                <div className="whitespace-pre-wrap text-gray-800">{loading && regenerating ? previousResult : result}</div>
+                <div className="whitespace-pre-wrap text-gray-800 dark:text-gray-200">{loading && regenerating ? previousResult : result}</div>
               </div>
-              <div className="mt-4 text-sm text-gray-500">
+              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 <p>Tip: The poll includes Discord markdown formatting. You can further customize it with emojis, mentions, and additional formatting before posting.</p>
                 <p className="mt-2">To create a reaction poll, add emoji reactions to your message after posting it. Members can then vote by clicking those reactions.</p>
                 {!loading && (
@@ -223,25 +223,25 @@ export default function PollGenerator() {
         {/* Poll Tips - Shown after results are generated */}
         {result && !loading && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Poll Best Practices</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-200">Poll Best Practices</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Use these tips to make your Discord polls more effective:
             </p>
             <ProChecklist type="poll" />
             
-            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
-              <h3 className="font-semibold text-[#026AA2] mb-2">Why Polls Matter</h3>
-              <p className="text-sm text-gray-700 mb-3">
+            <div className="mt-8 bg-[#F0F9FF] dark:bg-[#2F3136] border border-[#B9E6FE] dark:border-[#4752C4] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] dark:text-[#5865F2] mb-2">Why Polls Matter</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                 Well-designed polls are essential for gathering community feedback and increasing engagement. Effective polls:
               </p>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                 <li>Increase member participation and investment in the community</li>
                 <li>Provide valuable insights into member preferences and opinions</li>
                 <li>Help guide server decisions based on community feedback</li>
                 <li>Create opportunities for discussion and interaction</li>
                 <li>Make members feel their opinions are valued</li>
               </ul>
-              <p className="text-sm text-gray-700 mt-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
                 Consider using specialized poll bots for more advanced polling features, or use Discord's built-in reaction system for simple polls. For important polls, pin them to ensure visibility and announce them in your server.
               </p>
             </div>

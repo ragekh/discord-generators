@@ -132,7 +132,7 @@ export default function ServerDescriptionGenerator() {
       
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-[#F6F6FE] rounded-full mb-4">
+          <div className="inline-block p-3 bg-[#F6F6FE] dark:bg-[#2F3136] rounded-full mb-4">
             <div className="text-[#5865F2]">
               <ServerDescriptionIcon />
             </div>
@@ -143,28 +143,28 @@ export default function ServerDescriptionGenerator() {
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mb-6">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 mb-6">
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Server Name:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Server Name:</label>
             <input
               type="text"
               value={serverName}
               onChange={(e) => setServerName(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               placeholder="e.g., Gaming Legends, Art Haven, Tech Support"
               required
             />
             
             {/* Server Name Suggestions */}
             <div className="mt-2">
-              <p className="text-sm text-gray-600 mb-2">Popular server names (click to use):</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Popular server names (click to use):</p>
               <div className="flex flex-wrap gap-2">
                 {serverNameSuggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => addNameSuggestion(suggestion)}
-                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                    className="text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-1 px-2 rounded transition"
                   >
                     {suggestion}
                   </button>
@@ -174,11 +174,11 @@ export default function ServerDescriptionGenerator() {
           </div>
           
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Server Details:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Server Details:</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md mb-4 focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md mb-4 focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               rows="4"
               placeholder="Describe your server's purpose, community, activities, and what makes it special. Include any specific features, events, or rules you want to highlight."
               required
@@ -186,14 +186,14 @@ export default function ServerDescriptionGenerator() {
             
             {/* Server Details Suggestions */}
             <div className="mb-4">
-              <p className="text-sm text-gray-600 mb-2">Popular features (click to add):</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Popular features (click to add):</p>
               <div className="flex flex-wrap gap-2">
                 {detailsSuggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => addDetailsSuggestion(suggestion)}
-                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                    className="text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-1 px-2 rounded transition"
                   >
                     {suggestion}
                   </button>
@@ -232,22 +232,22 @@ export default function ServerDescriptionGenerator() {
         {/* Results Section */}
         <div ref={resultRef}>
           {(result || (loading && regenerating)) && (
-            <div className={`bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
+            <div className={`bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-[#2C2F33]">
+                <h2 className="text-xl font-semibold text-[#2C2F33] dark:text-gray-200">
                   {loading && regenerating ? 'Regenerating Description...' : 'Generated Server Description:'}
                 </h2>
                 {!loading && <CopyButton text={result} />}
               </div>
-              <div className="bg-gray-50 p-4 rounded-md border border-gray-200 relative">
+              <div className="bg-gray-50 dark:bg-[#2F3136] p-4 rounded-md border border-gray-200 dark:border-gray-700 relative">
                 {loading && regenerating && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+                  <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-[#36393F] bg-opacity-70 z-10">
                     <LoadingSpinner size="lg" color="#5865F2" />
                   </div>
                 )}
-                <div className="whitespace-pre-wrap text-gray-800">{loading && regenerating ? previousResult : result}</div>
+                <div className="whitespace-pre-wrap text-gray-800 dark:text-gray-200">{loading && regenerating ? previousResult : result}</div>
               </div>
-              <div className="mt-4 text-sm text-gray-500">
+              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 <p>Tip: Discord server descriptions have a 1,000 character limit. The generated description should be within this limit, but you may need to edit it if it's too long.</p>
                 {!loading && (
                   <button
@@ -269,25 +269,25 @@ export default function ServerDescriptionGenerator() {
         {/* Server Description Checklist - Shown after results are generated */}
         {result && !loading && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Server Description Checklist</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-200">Server Description Checklist</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Use this checklist to ensure your server description is effective:
             </p>
             <ProChecklist type="server-description" />
             
-            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
-              <h3 className="font-semibold text-[#026AA2] mb-2">Why Your Server Description Matters</h3>
-              <p className="text-sm text-gray-700 mb-3">
+            <div className="mt-8 bg-[#F0F9FF] dark:bg-[#2F3136] border border-[#B9E6FE] dark:border-[#4752C4] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] dark:text-[#5865F2] mb-2">Why Your Server Description Matters</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                 Your Discord server description is often the first impression potential members have of your community. A well-crafted description can:
               </p>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                 <li>Clearly communicate your server's purpose and focus</li>
                 <li>Set expectations for new members about the community vibe</li>
                 <li>Highlight unique features and benefits of joining</li>
                 <li>Attract members who are genuinely interested in your community</li>
                 <li>Improve your server's discoverability in Discord's server discovery</li>
               </ul>
-              <p className="text-sm text-gray-700 mt-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
                 Remember to keep your description concise (under 1,000 characters), engaging, and reflective of your server's personality.
               </p>
             </div>

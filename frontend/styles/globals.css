@@ -6,12 +6,19 @@
   --discord-blue: #5865F2;
   --discord-blue-dark: #4752C4;
   --discord-dark: #2C2F33;
+  --discord-darker: #202225;
+  --discord-light: #F6F6FE;
 }
 
 body {
   font-family: 'Arial', sans-serif;
   color: #333;
   line-height: 1.6;
+}
+
+.dark body {
+  color: #e4e4e4;
+  background-color: var(--discord-dark);
 }
 
 /* Improved focus styles for better accessibility */
@@ -52,11 +59,24 @@ body {
   background: #f1f1f1;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #2F3136;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 4px;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  background: #4E5058;
+  border-radius: 4px;
+}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #aaa;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5865F2;
 }

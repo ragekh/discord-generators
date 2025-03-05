@@ -18,14 +18,14 @@ const FAQ = ({ faqs }) => {
   if (!faqs || faqs.length === 0) return null;
 
   return (
-    <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="w-full max-w-4xl mx-auto bg-white dark:bg-[#36393F] rounded-lg shadow-md overflow-hidden">
       <div className="p-6">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Frequently Asked Questions</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center dark:text-gray-200">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+            <div key={index} className="border-b border-gray-200 dark:border-gray-700 pb-4 last:border-b-0 last:pb-0">
               <button
-                className="flex justify-between items-center w-full text-left font-medium text-gray-900 focus:outline-none"
+                className="flex justify-between items-center w-full text-left font-medium text-gray-900 dark:text-gray-200 focus:outline-none"
                 onClick={() => toggleQuestion(index)}
                 aria-expanded={openIndex === index}
               >
@@ -45,7 +45,7 @@ const FAQ = ({ faqs }) => {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <p className="text-gray-600">{faq.answer}</p>
+                <p className="text-gray-600 dark:text-gray-300">{faq.answer}</p>
               </div>
             </div>
           ))}

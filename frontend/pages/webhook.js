@@ -118,7 +118,7 @@ export default function WebhookGenerator() {
       
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-[#F6F6FE] rounded-full mb-4">
+          <div className="inline-block p-3 bg-[#F6F6FE] dark:bg-[#2F3136] rounded-full mb-4">
             <div className="text-[#5865F2]">
               <WebhookIcon />
             </div>
@@ -129,26 +129,26 @@ export default function WebhookGenerator() {
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mb-6">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 mb-6">
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Integration Service:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Integration Service:</label>
             <input
               type="text"
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               placeholder="Which service are you integrating with Discord? (e.g., GitHub, Trello, etc.)"
               required
             />
             <div className="mt-2">
-              <p className="text-sm text-gray-600 mb-2">Suggestions:</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Suggestions:</p>
               <div className="flex flex-wrap gap-2">
                 {serviceSuggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => setService(suggestion)}
-                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                    className="text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-1 px-2 rounded transition"
                   >
                     {suggestion}
                   </button>
@@ -158,24 +158,24 @@ export default function WebhookGenerator() {
           </div>
           
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Integration Purpose:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Integration Purpose:</label>
             <input
               type="text"
               value={purpose}
               onChange={(e) => setPurpose(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               placeholder="What is the purpose of this integration? (e.g., commit notifications, issue tracking, etc.)"
               required
             />
             <div className="mt-2">
-              <p className="text-sm text-gray-600 mb-2">Suggestions:</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Suggestions:</p>
               <div className="flex flex-wrap gap-2">
                 {purposeSuggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => setPurpose(suggestion)}
-                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                    className="text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-1 px-2 rounded transition"
                   >
                     {suggestion}
                   </button>
@@ -214,22 +214,22 @@ export default function WebhookGenerator() {
         {/* Results Section */}
         <div ref={resultRef}>
           {(result || (loading && regenerating)) && (
-            <div className={`bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
+            <div className={`bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-[#2C2F33]">
+                <h2 className="text-xl font-semibold text-[#2C2F33] dark:text-gray-200">
                   {loading && regenerating ? 'Regenerating Webhook Configuration...' : 'Generated Webhook Configuration:'}
                 </h2>
                 {!loading && <CopyButton text={result} />}
               </div>
-              <div className="bg-gray-50 p-4 rounded-md border border-gray-200 relative">
+              <div className="bg-gray-50 dark:bg-[#2F3136] p-4 rounded-md border border-gray-200 dark:border-gray-700 relative">
                 {loading && regenerating && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+                  <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-[#36393F] bg-opacity-70 z-10">
                     <LoadingSpinner size="lg" color="#5865F2" />
                   </div>
                 )}
-                <div className="whitespace-pre-wrap text-gray-800">{loading && regenerating ? previousResult : result}</div>
+                <div className="whitespace-pre-wrap text-gray-800 dark:text-gray-200">{loading && regenerating ? previousResult : result}</div>
               </div>
-              <div className="mt-4 text-sm text-gray-500">
+              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 <p>Tip: The configuration includes Discord markdown formatting. You can further customize it with emojis, mentions, and additional formatting before using it.</p>
                 <p className="mt-2">Remember to keep your webhook URLs private and secure. Never share them publicly or commit them to public repositories.</p>
                 {!loading && (
@@ -252,25 +252,25 @@ export default function WebhookGenerator() {
         {/* Webhook Tips - Shown after results are generated */}
         {result && !loading && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Webhook Best Practices</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-200">Webhook Best Practices</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Use these tips to make your Discord webhooks more effective:
             </p>
             <ProChecklist type="webhook" />
             
-            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
-              <h3 className="font-semibold text-[#026AA2] mb-2">Why Webhooks Matter</h3>
-              <p className="text-sm text-gray-700 mb-3">
+            <div className="mt-8 bg-[#F0F9FF] dark:bg-[#2F3136] border border-[#B9E6FE] dark:border-[#4752C4] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] dark:text-[#5865F2] mb-2">Why Webhooks Matter</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                 Well-configured webhooks are essential for creating seamless integrations with your Discord server. Effective webhooks:
               </p>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                 <li>Automate notifications from external services</li>
                 <li>Keep your community updated with real-time information</li>
                 <li>Reduce manual work for server administrators</li>
                 <li>Create a more integrated and professional server experience</li>
                 <li>Enable powerful workflows between Discord and other platforms</li>
               </ul>
-              <p className="text-sm text-gray-700 mt-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
                 Consider using webhook avatars and names that clearly identify the source of the messages. You can also use embeds for more visually appealing and structured messages.
               </p>
             </div>

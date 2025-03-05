@@ -130,7 +130,7 @@ export default function RoleNameGenerator() {
       
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-[#F6F6FE] rounded-full mb-4">
+          <div className="inline-block p-3 bg-[#F6F6FE] dark:bg-[#2F3136] rounded-full mb-4">
             <div className="text-[#5865F2]">
               <RoleNameIcon />
             </div>
@@ -141,28 +141,28 @@ export default function RoleNameGenerator() {
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mb-6">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 mb-6">
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Server Theme:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Server Theme:</label>
             <input
               type="text"
               value={serverTheme}
               onChange={(e) => setServerTheme(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               placeholder="e.g., Gaming, Art, Tech Support, Anime, Music"
               required
             />
             
             {/* Server Theme Suggestions */}
             <div className="mt-2">
-              <p className="text-sm text-gray-600 mb-2">Popular server themes (click to use):</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">Popular server themes (click to use):</p>
               <div className="flex flex-wrap gap-2">
                 {serverThemeSuggestions.map((suggestion) => (
                   <button
                     key={suggestion}
                     type="button"
                     onClick={() => addThemeSuggestion(suggestion)}
-                    className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 py-1 px-2 rounded transition"
+                    className="text-xs bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-1 px-2 rounded transition"
                   >
                     {suggestion}
                   </button>
@@ -172,11 +172,11 @@ export default function RoleNameGenerator() {
           </div>
           
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Role Type:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Role Type:</label>
             <select
               value={roleType}
               onChange={(e) => setRoleType(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               required
             >
               <option value="" disabled>Select a role type</option>
@@ -189,7 +189,7 @@ export default function RoleNameGenerator() {
                 type="text"
                 value={roleType === "Custom" ? "" : roleType}
                 onChange={(e) => setRoleType(e.target.value)}
-                className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+                className="w-full mt-2 p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
                 placeholder="Enter custom role type"
                 required
               />
@@ -226,22 +226,22 @@ export default function RoleNameGenerator() {
         {/* Results Section */}
         <div ref={resultRef}>
           {(result || (loading && regenerating)) && (
-            <div className={`bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
+            <div className={`bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-[#2C2F33]">
+                <h2 className="text-xl font-semibold text-[#2C2F33] dark:text-gray-200">
                   {loading && regenerating ? 'Regenerating Role Names...' : 'Generated Role Names:'}
                 </h2>
                 {!loading && <CopyButton text={result} />}
               </div>
-              <div className="bg-gray-50 p-4 rounded-md border border-gray-200 relative">
+              <div className="bg-gray-50 dark:bg-[#2F3136] p-4 rounded-md border border-gray-200 dark:border-gray-700 relative">
                 {loading && regenerating && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+                  <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-[#36393F] bg-opacity-70 z-10">
                     <LoadingSpinner size="lg" color="#5865F2" />
                   </div>
                 )}
-                <pre className="whitespace-pre-wrap text-gray-800">{loading && regenerating ? previousResult : result}</pre>
+                <pre className="whitespace-pre-wrap text-gray-800 dark:text-gray-200">{loading && regenerating ? previousResult : result}</pre>
               </div>
-              <div className="mt-4 text-sm text-gray-500">
+              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 <p>Tip: Each role name includes a suggested color hex code. You can use these codes when creating roles in your Discord server settings.</p>
                 {!loading && (
                   <button
@@ -263,25 +263,25 @@ export default function RoleNameGenerator() {
         {/* Role Name Tips - Shown after results are generated */}
         {result && !loading && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Role Hierarchy Best Practices</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-200">Role Hierarchy Best Practices</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Use these tips to create an effective role system:
             </p>
             <ProChecklist type="role-name" />
             
-            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
-              <h3 className="font-semibold text-[#026AA2] mb-2">Why Role Names Matter</h3>
-              <p className="text-sm text-gray-700 mb-3">
+            <div className="mt-8 bg-[#F0F9FF] dark:bg-[#2F3136] border border-[#B9E6FE] dark:border-[#4752C4] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] dark:text-[#5865F2] mb-2">Why Role Names Matter</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                 Well-designed roles enhance your Discord server's organization and member experience. Good role systems:
               </p>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                 <li>Create a clear hierarchy that members can understand at a glance</li>
                 <li>Use colors effectively to distinguish between different role types</li>
                 <li>Reflect your server's theme and personality</li>
                 <li>Provide recognition and status to active members</li>
                 <li>Make permission management easier with logical groupings</li>
               </ul>
-              <p className="text-sm text-gray-700 mt-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
                 Remember that Discord displays roles in order from bottom to top in the role settings, with higher roles having more permissions. Plan your hierarchy accordingly, and consider using role separators (blank roles with a colored line as the name) to organize your roles visually.
               </p>
             </div>

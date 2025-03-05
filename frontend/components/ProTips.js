@@ -352,7 +352,7 @@ const ProTips = ({ category = 'general', autoRotate = true, interval = 10000 }) 
   };
   
   return (
-    <div className="bg-[#F6F6FE] border border-[#DBDCFF] rounded-lg p-4 my-4">
+    <div className="bg-[#F6F6FE] dark:bg-[#2F3136] border border-[#DBDCFF] dark:border-[#4752C4] rounded-lg p-4 my-4">
       <div className="flex items-start">
         <div className="text-[#5865F2] mr-3 mt-1">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -361,16 +361,16 @@ const ProTips = ({ category = 'general', autoRotate = true, interval = 10000 }) 
         </div>
         <div className="flex-1">
           <h3 className="font-semibold text-[#5865F2] text-sm mb-1">PRO TIP: {currentTip.title}</h3>
-          <p className="text-sm text-gray-700">{currentTip.content}</p>
+          <p className="text-sm text-gray-700 dark:text-gray-300">{currentTip.content}</p>
         </div>
       </div>
       
       <div className="flex justify-between mt-3">
-        <div className="text-xs text-gray-500">
+        <div className="text-xs text-gray-500 dark:text-gray-400">
           Tip {currentTipIndex + 1} of {tips.length}
         </div>
         <div className="flex space-x-2">
-          <button 
+          <button
             onClick={goToPreviousTip}
             className="text-[#5865F2] hover:text-[#4752C4] transition"
             aria-label="Previous tip"
@@ -379,7 +379,7 @@ const ProTips = ({ category = 'general', autoRotate = true, interval = 10000 }) 
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <button 
+          <button
             onClick={goToNextTip}
             className="text-[#5865F2] hover:text-[#4752C4] transition"
             aria-label="Next tip"

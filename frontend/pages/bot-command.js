@@ -106,7 +106,7 @@ export default function BotCommandGenerator() {
       
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-[#F6F6FE] rounded-full mb-4">
+          <div className="inline-block p-3 bg-[#F6F6FE] dark:bg-[#2F3136] rounded-full mb-4">
             <div className="text-[#5865F2]">
               <BotCommandIcon />
             </div>
@@ -117,25 +117,25 @@ export default function BotCommandGenerator() {
           </p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md border border-gray-100 mb-6">
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 mb-6">
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Bot Name:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Bot Name:</label>
             <input
               type="text"
               value={botName}
               onChange={(e) => setBotName(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               placeholder="e.g., ServerBot, ModeratorBot, FunBot"
               required
             />
           </div>
           
           <div className="mb-4">
-            <label className="block mb-2 font-semibold">Bot Purpose:</label>
+            <label className="block mb-2 font-semibold dark:text-gray-200">Bot Purpose:</label>
             <select
               value={botPurpose}
               onChange={(e) => setBotPurpose(e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+              className="w-full p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
               required
             >
               <option value="" disabled>Select a purpose</option>
@@ -147,7 +147,7 @@ export default function BotCommandGenerator() {
               <textarea
                 value={botPurpose === "Custom" ? "" : botPurpose}
                 onChange={(e) => setBotPurpose(e.target.value)}
-                className="w-full mt-2 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
+                className="w-full mt-2 p-3 border border-gray-300 dark:border-gray-600 dark:bg-[#2F3136] dark:text-gray-200 rounded-md focus:ring-2 focus:ring-[#5865F2] focus:border-[#5865F2] outline-none transition"
                 rows="3"
                 placeholder="Describe the specific purpose of your bot and what kind of commands you need"
                 required
@@ -185,22 +185,22 @@ export default function BotCommandGenerator() {
         {/* Results Section */}
         <div ref={resultRef}>
           {(result || (loading && regenerating)) && (
-            <div className={`bg-white p-6 rounded-lg shadow-md border border-gray-100 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
+            <div className={`bg-white dark:bg-[#36393F] p-6 rounded-lg shadow-md border border-gray-100 dark:border-gray-700 transition-opacity duration-300 ${loading && regenerating ? 'opacity-60' : 'opacity-100'} ${!previousResult && loading ? 'hidden' : ''}`}>
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-[#2C2F33]">
+                <h2 className="text-xl font-semibold text-[#2C2F33] dark:text-gray-200">
                   {loading && regenerating ? 'Regenerating Bot Commands...' : 'Generated Bot Commands:'}
                 </h2>
                 {!loading && <CopyButton text={result} />}
               </div>
-              <div className="bg-gray-50 p-4 rounded-md border border-gray-200 relative">
+              <div className="bg-gray-50 dark:bg-[#2F3136] p-4 rounded-md border border-gray-200 dark:border-gray-700 relative">
                 {loading && regenerating && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+                  <div className="absolute inset-0 flex items-center justify-center bg-white dark:bg-[#36393F] bg-opacity-70 z-10">
                     <LoadingSpinner size="lg" color="#5865F2" />
                   </div>
                 )}
-                <pre className="whitespace-pre-wrap text-gray-800">{loading && regenerating ? previousResult : result}</pre>
+                <pre className="whitespace-pre-wrap text-gray-800 dark:text-gray-200">{loading && regenerating ? previousResult : result}</pre>
               </div>
-              <div className="mt-4 text-sm text-gray-500">
+              <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
                 <p>Tip: These commands are ideas that you can implement with bot creation tools like Discord.js, discord.py, or bot creation platforms like BotGhost or Discord Bot Maker.</p>
                 {!loading && (
                   <button
@@ -222,25 +222,25 @@ export default function BotCommandGenerator() {
         {/* Bot Command Tips - Shown after results are generated */}
         {result && !loading && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold mb-4">Bot Command Best Practices</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-200">Bot Command Best Practices</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               Use these tips to create effective bot commands:
             </p>
             <ProChecklist type="bot-command" />
             
-            <div className="mt-8 bg-[#F0F9FF] border border-[#B9E6FE] rounded-lg p-4">
-              <h3 className="font-semibold text-[#026AA2] mb-2">Why Bot Commands Matter</h3>
-              <p className="text-sm text-gray-700 mb-3">
+            <div className="mt-8 bg-[#F0F9FF] dark:bg-[#2F3136] border border-[#B9E6FE] dark:border-[#4752C4] rounded-lg p-4">
+              <h3 className="font-semibold text-[#026AA2] dark:text-[#5865F2] mb-2">Why Bot Commands Matter</h3>
+              <p className="text-sm text-gray-700 dark:text-gray-300 mb-3">
                 Well-designed bot commands can significantly enhance your Discord server. Good bot commands:
               </p>
-              <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
+              <ul className="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300 space-y-1">
                 <li>Automate repetitive tasks and moderation</li>
                 <li>Provide entertainment and engagement for members</li>
                 <li>Create unique interactive experiences specific to your server</li>
                 <li>Help new members learn about your server and its features</li>
                 <li>Collect feedback and facilitate community interaction</li>
               </ul>
-              <p className="text-sm text-gray-700 mt-3">
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
                 When implementing these commands, consider creating a dedicated #bot-commands channel to prevent spam in main chat channels, and create a command list or help command so users know what commands are available.
               </p>
             </div>
