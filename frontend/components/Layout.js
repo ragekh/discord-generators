@@ -97,60 +97,84 @@ export default function Layout({ children }) {
           </button>
           
           {/* Desktop navigation */}
-          <nav className="hidden md:flex space-x-4">
+          <nav className="hidden md:flex space-x-2 items-center">
             <Link
               href="/server-name"
-              className={`hover:text-white/90 transition ${router.pathname === '/server-name' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/server-name' ? 'font-bold' : ''}`}
             >
               Server Names
             </Link>
             <Link
               href="/server-description"
-              className={`hover:text-white/90 transition ${router.pathname === '/server-description' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/server-description' ? 'font-bold' : ''}`}
             >
               Descriptions
             </Link>
             <Link
               href="/channel-name"
-              className={`hover:text-white/90 transition ${router.pathname === '/channel-name' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/channel-name' ? 'font-bold' : ''}`}
             >
               Channel Names
             </Link>
             <Link
               href="/welcome-message"
-              className={`hover:text-white/90 transition ${router.pathname === '/welcome-message' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/welcome-message' ? 'font-bold' : ''}`}
             >
-              Welcome Messages
+              Welcome
             </Link>
             <Link
               href="/bot-command"
-              className={`hover:text-white/90 transition ${router.pathname === '/bot-command' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/bot-command' ? 'font-bold' : ''}`}
             >
               Bot Commands
             </Link>
             <Link
               href="/role-name"
-              className={`hover:text-white/90 transition ${router.pathname === '/role-name' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/role-name' ? 'font-bold' : ''}`}
             >
-              Role Names
+              Roles
             </Link>
             <Link
               href="/server-rules"
-              className={`hover:text-white/90 transition ${router.pathname === '/server-rules' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/server-rules' ? 'font-bold' : ''}`}
             >
-              Server Rules
+              Rules
             </Link>
             <Link
               href="/announcement"
-              className={`hover:text-white/90 transition ${router.pathname === '/announcement' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/announcement' ? 'font-bold' : ''}`}
             >
               Announcements
             </Link>
             <Link
               href="/emoji"
-              className={`hover:text-white/90 transition ${router.pathname === '/emoji' ? 'font-bold' : ''}`}
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/emoji' ? 'font-bold' : ''}`}
             >
               Emojis
+            </Link>
+            <Link
+              href="/event"
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/event' ? 'font-bold' : ''}`}
+            >
+              Events
+            </Link>
+            <Link
+              href="/poll"
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/poll' ? 'font-bold' : ''}`}
+            >
+              Polls
+            </Link>
+            <Link
+              href="/webhook"
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/webhook' ? 'font-bold' : ''}`}
+            >
+              Webhooks
+            </Link>
+            <Link
+              href="/moderation"
+              className={`text-sm hover:text-white/90 transition px-2 ${router.pathname === '/moderation' ? 'font-bold' : ''}`}
+            >
+              Moderation
             </Link>
           </nav>
         </div>
@@ -213,6 +237,32 @@ export default function Layout({ children }) {
               >
                 Emojis
               </Link>
+              
+              {/* New generators */}
+              <Link
+                href="/event"
+                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/event' ? 'font-bold bg-[#5865F2]' : ''}`}
+              >
+                Events
+              </Link>
+              <Link
+                href="/poll"
+                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/poll' ? 'font-bold bg-[#5865F2]' : ''}`}
+              >
+                Polls
+              </Link>
+              <Link
+                href="/webhook"
+                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/webhook' ? 'font-bold bg-[#5865F2]' : ''}`}
+              >
+                Webhooks
+              </Link>
+              <Link
+                href="/moderation"
+                className={`block py-2 px-4 rounded hover:bg-[#5865F2] transition ${router.pathname === '/moderation' ? 'font-bold bg-[#5865F2]' : ''}`}
+              >
+                Moderation
+              </Link>
             </div>
           </nav>
         )}
@@ -240,36 +290,48 @@ export default function Layout({ children }) {
                 </a>
               </p>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/" className="text-sm hover:text-[#5865F2] transition">
+            <div className="flex flex-wrap gap-2">
+              <Link href="/" className="text-xs hover:text-[#5865F2] transition px-1">
                 Home
               </Link>
-              <Link href="/server-name" className="text-sm hover:text-[#5865F2] transition">
+              <Link href="/server-name" className="text-xs hover:text-[#5865F2] transition px-1">
                 Server Names
               </Link>
-              <Link href="/server-description" className="text-sm hover:text-[#5865F2] transition">
+              <Link href="/server-description" className="text-xs hover:text-[#5865F2] transition px-1">
                 Descriptions
               </Link>
-              <Link href="/channel-name" className="text-sm hover:text-[#5865F2] transition">
-                Channel Names
+              <Link href="/channel-name" className="text-xs hover:text-[#5865F2] transition px-1">
+                Channels
               </Link>
-              <Link href="/welcome-message" className="text-sm hover:text-[#5865F2] transition">
-                Welcome Messages
+              <Link href="/welcome-message" className="text-xs hover:text-[#5865F2] transition px-1">
+                Welcome
               </Link>
-              <Link href="/bot-command" className="text-sm hover:text-[#5865F2] transition">
-                Bot Commands
+              <Link href="/bot-command" className="text-xs hover:text-[#5865F2] transition px-1">
+                Bots
               </Link>
-              <Link href="/role-name" className="text-sm hover:text-[#5865F2] transition">
-                Role Names
+              <Link href="/role-name" className="text-xs hover:text-[#5865F2] transition px-1">
+                Roles
               </Link>
-              <Link href="/server-rules" className="text-sm hover:text-[#5865F2] transition">
-                Server Rules
+              <Link href="/server-rules" className="text-xs hover:text-[#5865F2] transition px-1">
+                Rules
               </Link>
-              <Link href="/announcement" className="text-sm hover:text-[#5865F2] transition">
+              <Link href="/announcement" className="text-xs hover:text-[#5865F2] transition px-1">
                 Announcements
               </Link>
-              <Link href="/emoji" className="text-sm hover:text-[#5865F2] transition">
+              <Link href="/emoji" className="text-xs hover:text-[#5865F2] transition px-1">
                 Emojis
+              </Link>
+              <Link href="/event" className="text-xs hover:text-[#5865F2] transition px-1">
+                Events
+              </Link>
+              <Link href="/poll" className="text-xs hover:text-[#5865F2] transition px-1">
+                Polls
+              </Link>
+              <Link href="/webhook" className="text-xs hover:text-[#5865F2] transition px-1">
+                Webhooks
+              </Link>
+              <Link href="/moderation" className="text-xs hover:text-[#5865F2] transition px-1">
+                Moderation
               </Link>
             </div>
           </div>
